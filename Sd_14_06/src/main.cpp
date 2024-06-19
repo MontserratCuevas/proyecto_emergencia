@@ -66,13 +66,56 @@ void setup() {
   // Configurar servidor web
   server.on("/", []() {
     server.send(200, "text/html", R"(
-      <html>
-      <body>
-        <button onclick="location.href='/record'">Grabar</button>
-        <button onclick="location.href='/play'">Reproducir</button>
-        <button onclick="location.href='/stop'">Detener</button>    
-      </body>
-      </html>
+      <html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control de Audio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      text-align: center;
+      margin: 50px;
+    }
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .button:hover {
+      background-color: #4CAF50; /* Color verde cuando se pasa el mouse sobre el botón */
+      color: white;
+    }
+    .button.record {
+      background-color: #f44336; /* Color rojo para el botón de grabar */
+    }
+    .button.play {
+      background-color: #2196F3; /* Color azul para el botón de reproducir */
+    }
+    .button.stop {
+      background-color: #FFC107; /* Color amarillo para el botón de detener */
+    }
+  </style>
+</head>
+<body>
+  <h1>Control de Audio</h1>
+  <div class="button-container">
+    <button class="button record" onclick="location.href='/record'">Grabar</button>
+    <button class="button play" onclick="location.href='/play'">Reproducir</button>
+    <button class="button stop" onclick="location.href='/stop'">Detener</button>
+  </div>
+</body>
+</html>
     )");
   });
  
